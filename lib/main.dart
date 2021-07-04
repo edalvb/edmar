@@ -1,9 +1,5 @@
-/// Flutter code sample for Card
-
-// This sample shows creation of a [Card] widget that shows album information
-// and two actions.
-
 import 'package:flutter/material.dart';
+import 'package:edmar/components/alternativa.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,11 +7,16 @@ void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'Práctica para examen';
+
+  static const Color pcolor = Color.fromRGBO(18, 129, 129, 1);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: pcolor,
+      ),
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
@@ -28,7 +29,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatefulWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
 
@@ -36,101 +36,96 @@ class MyStatelessWidget extends StatefulWidget {
   _MyStatelessWidgetState createState() => _MyStatelessWidgetState();
 }
 
+
+List<Object> algo1() {
+  return [
+    [
+      "Respecto de los dispositivos de control o regulación del tránsito",
+      "url_imagen",
+      1,
+      [
+        "Solo los peatones están obligados a su obediencia.",
+        "Los conductores y los peatones están obligados a su obediencia, salvo instrucción de la Policía Nacional del Perú asignada al tránsito que indique lo contrario.",
+        "Solo los conductores están obligados a su obediencia.",
+        "Los conductores están obligados a su obediencia, aun cuando la Policía Nacional del Perú asignada al tránsito pueda indicar lo contrario."
+      ]
+    ],
+    [
+      "La señal vertical reglamentaria R-6 “prohibido voltear a la izquierda”, significa que:",
+      "url_imagen",
+      0,
+      [
+        "Está prohibido voltear a la izquierda y, por lo tanto también está prohibido el giro en U.",
+        "Está prohibido voltear a la izquierda, sin embargo, está permitido el giro en U.",
+        "El único sentido de desplazamiento es continuar de frente.",
+        "Ninguna de las alternativas es correcta."
+      ]
+    ]
+  ];
+}
+
+Map<int, Map<String, Map<Object, String>>> algo() {
+  return {
+    0: {
+      "pregunta": {
+        "pregunta":
+            "Respecto de los dispositivos de control o regulación del tránsito",
+        "urlimage": ""
+      },
+      "alternativa": {
+        0: "Solo los peatones están obligados a su obediencia.",
+        1: "Los conductores y los peatones están obligados a su obediencia, salvo instrucción de la Policía Nacional del Perú asignada al tránsito que indique lo contrario.",
+        2: "Solo los conductores están obligados a su obediencia.",
+        3: "Los conductores están obligados a su obediencia, aun cuando la Policía Nacional del Perú asignada al tránsito pueda indicar lo contrario."
+      }
+    }
+  };
+}
+
+String letra(int numero) {
+  var abc = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z"
+  ];
+  return abc[numero];
+}
+
 class _MyStatelessWidgetState extends State<MyStatelessWidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [mycard(), mycard(), mycard()],
-    );
-  }
-
-  Widget card() {
-    Color mycolor = Colors.white;
-    return Card(
-      color: mycolor,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const ListTile(
-            leading: Icon(Icons.album),
-            title: Text('The Enchanted Nightingale'),
-            subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              TextButton(
-                child: const Text('BUY TICKETS'),
-                onPressed: () {
-                  mycolor = Colors.yellow;
-                  setState(() {
-                    mycolor = Colors.yellow;
-                    print("hola");
-                  });
-                },
-              ),
-              const SizedBox(width: 8),
-              TextButton(
-                child: const Text('LISTEN'),
-                onPressed: () {/* ... */},
-              ),
-              const SizedBox(width: 8),
-            ],
-          ),
+    return ListView(
+        // children: [Alternativa(letra(0), algo()[0]["alternativa"][0]],
+        children: [
+          Alternativa("a", "Solo los peatones están obligados a su obediencia."),
+          Alternativa("b", "Solo los peatones están obligados a su obediencia."),
+          Alternativa("c", "Solo los peatones están obligados a su obediencia."),
+          Alternativa("d", "Solo los peatones están obligados a su obediencia.")
         ],
-      ),
-    );
-  }
-}
-
-class mycard extends StatefulWidget {
-  const mycard({Key? key}) : super(key: key);
-
-  @override
-  _mycardState createState() => _mycardState();
-}
-
-class _mycardState extends State<mycard> {
-  Color mycolor = Colors.white;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: mycolor,
-      child: InkWell(
-        onTap: (){
-          setState(() {
-            mycolor =
-            mycolor == Colors.yellow ? Colors.white : Colors.yellow;
-          });
-        },
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const ListTile(
-              leading: Icon(Icons.album),
-              title: Text('The Enchanted Nightingale'),
-              subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                TextButton(
-                  child: const Text('BUY TICKETS'),
-                  onPressed: () {},
-                ),
-                const SizedBox(width: 8),
-                TextButton(
-                  child: const Text('LISTEN'),
-                  onPressed: () {/* ... */},
-                ),
-                const SizedBox(width: 8),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+        );
   }
 }
 
