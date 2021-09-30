@@ -1,5 +1,7 @@
+import 'package:edmar/core/constants/constants.dart';
+import 'package:edmar/core/util/util.dart';
 import 'package:flutter/material.dart';
-import 'package:edmar/components/alternativa.dart';
+import 'package:edmar/core/components/alternativa.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   static const String _title = 'Práctica para examen';
 
-  static const Color pcolor = Color.fromRGBO(18, 129, 129, 1);
+  static final Color pcolor = COLOR.primary;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,6 @@ class MyStatelessWidget extends StatefulWidget {
   @override
   _MyStatelessWidgetState createState() => _MyStatelessWidgetState();
 }
-
 
 List<Object> algo1() {
   return [
@@ -83,34 +84,7 @@ Map<int, Map<String, Map<Object, String>>> algo() {
 }
 
 String letra(int numero) {
-  var abc = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z"
-  ];
+  var abc = Util.abecedario();
   return abc[numero];
 }
 
@@ -118,14 +92,14 @@ class _MyStatelessWidgetState extends State<MyStatelessWidget> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-        // children: [Alternativa(letra(0), algo()[0]["alternativa"][0]],
-        children: [
-          Alternativa("a", "Solo los peatones están obligados a su obediencia."),
-          Alternativa("b", "Solo los peatones están obligados a su obediencia."),
-          Alternativa("c", "Solo los peatones están obligados a su obediencia."),
-          Alternativa("d", "Solo los peatones están obligados a su obediencia.")
-        ],
-        );
+      // children: [Alternativa(letra(0), algo()[0]["alternativa"][0]],
+      children: [
+        Alternativa("a", "Solo los peatones están obligados a su obediencia."),
+        Alternativa("b", "Solo los peatones están obligados a su obediencia."),
+        Alternativa("c", "Solo los peatones están obligados a su obediencia."),
+        Alternativa("d", "Solo los peatones están obligados a su obediencia.")
+      ],
+    );
   }
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants/constants.dart';
 
 class Alternativa extends StatefulWidget {
   Alternativa(this.letra, this.pregunta, {Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class Alternativa extends StatefulWidget {
 
 class _AlternativaState extends State<Alternativa> {
   _AlternativaState(this.letra, this.pregunta);
+
+  Color c = COLOR.secondary;
 
   String letra, pregunta;
 
@@ -47,7 +50,7 @@ class _AlternativaState extends State<Alternativa> {
           onTapDown: (TapDownDetails) {
             setState(() {
               elevation = 1;
-              scolor = Color.fromRGBO(18, 129, 129, 1);
+              scolor = COLOR.primary;
             });
           },
         ),
